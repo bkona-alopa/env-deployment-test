@@ -4,6 +4,11 @@ on:
       environment:
         type: environment
 
+permissions:
+  id-token: write
+  contents: read
+  deployments: write
+
 jobs:
   imageBuildAndPush:
     runs-on: ubuntu-latest
@@ -39,11 +44,11 @@ jobs:
         id: time
         uses: Kaven-Universe/github-action-current-date-time@v1
         with:
-          format: "YYYY_MM_DD HH_mm_ss_SSS"
+          format: "YYYYMMDDHHmmssSSS"
 
-      - uses: rickstaa/action-create-tag@v1
-        id: "tag_create"
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
         with:
-          tag: "${{ vars.env }}-${{ steps.time.outputs.time }}"
-          tag_exists_error: true
-          message: "${{vars.env }} release"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: "${{ vars.env }}-${{ steps.time.outputs.time }}"
