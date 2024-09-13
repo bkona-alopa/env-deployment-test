@@ -30,7 +30,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            balamani3010/buildandpushtest:${{ github.sha }}-${{ var.env_name }}
+            balamani3010/buildandpushtest:${{ github.sha }}-${{ vars.env_name }}
             balamani3010/buildandpushtest:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
