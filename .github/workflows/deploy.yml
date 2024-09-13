@@ -49,6 +49,6 @@ jobs:
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
-          version: "${{ vars.env }}-${{ steps.time.outputs.time }}"
+          version: "${{ vars.env_name }}-${{ steps.time.outputs.time }}"
           message: "test"
           token: ${{ secrets.GITHUB_TOKEN }}
