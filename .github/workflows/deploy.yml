@@ -34,3 +34,16 @@ jobs:
             balamani3010/buildandpushtest:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Test1
+        id: time
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          format: "YYYY_MM_DD HH_mm_ss_SSS"
+
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: "${{ vars.env }}-${{ steps.time.outputs.time }}"
+          tag_exists_error: true
+          message: "${{vars.env }} release"
