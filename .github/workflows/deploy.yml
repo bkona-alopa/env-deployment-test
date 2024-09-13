@@ -46,6 +46,9 @@ jobs:
         with:
           format: "YYYYMMDDHHmmssSSS"
 
-      - name: tagging
-        run: |
-          git tag "${{ vars.env }}-${{ steps.time.outputs.time }}"
+      - name: Create Tag
+        uses: negz/create-tag@v1
+        with:
+          version: "${{ vars.env }}-${{ steps.time.outputs.time }}"
+          message: "test"
+          token: ${{ secrets.GITHUB_TOKEN }}
