@@ -49,13 +49,16 @@ jobs:
       #     message: "test"
       #     token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create tag
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ vars.env_name }}-${{ steps.time.outputs.time }}",
-              sha: context.sha
-            })
+      # - name: Create tag
+      #   uses: actions/github-script@v7
+      #   with:
+      #     script: |
+      #       github.rest.git.createRef({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         ref: "refs/tags/${{ vars.env_name }}-${{ steps.time.outputs.time }}",
+      #         sha: context.sha
+      #       })
+      - name: commit
+        run: |
+          echo "commit id: ${{ github.sha }}"
