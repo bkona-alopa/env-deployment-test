@@ -67,3 +67,4 @@ jobs:
           echo "commit id: ${{ github.sha }}"
           echo "directory: ${{fromJson(vars.CONTAINERCOMMAND).dbScriptDirectory}}"
           echo "missedScript: ${{fromJson(vars.CONTAINERCOMMAND).missedScriptName}}"
+          echo "branch: ${{ github.ref_name }}"
