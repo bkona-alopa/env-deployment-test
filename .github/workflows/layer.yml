@@ -1,0 +1,18 @@
+---
+name: "testing deployment"
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  ReuseableMatrixJobForDeployment:
+    strategy:
+      matrix:
+        target:
+          [DEV, TEST, PROD]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      deployment_environment: ${{ matrix.target }}
