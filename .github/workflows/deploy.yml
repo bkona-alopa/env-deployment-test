@@ -15,9 +15,6 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Deployment to non-prod
+      - name: Deployment to ${{ inputs.deployment_environment }}
         run: |
           echo "the variable value is: ${{var.ENV_NAME}}"

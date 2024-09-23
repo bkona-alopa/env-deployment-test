@@ -9,10 +9,13 @@ on:
 
 jobs:
   ReuseableMatrixJobForDeployment:
-    # strategy:
-    #   matrix:
-    #     target:
-    #       [DEV, TEST, PROD]
-    uses: ./.github/workflows/deploy.yml
-    with:
-      deployment_environment: "DEV"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          [DEV, TEST, PROD]
+    steps:
+      - name: deployment
+        uses: ./.github/workflows/deploy.yml
+        with:
+          deployment_environment: ${{ matrix.target }}
