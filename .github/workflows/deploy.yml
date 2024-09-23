@@ -6,7 +6,7 @@ on:
     inputs:
       deployment_environment:
         required: true
-        type: environment
+        type: string
 
 jobs:
   deployment-${{ inputs.deployment_environment }}:
