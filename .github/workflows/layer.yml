@@ -19,6 +19,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: deployment
-        uses: ./.github/workflows/deploy.yml
+        uses: bkona-alopa/env-deployment-test/.github/workflows/deploy.yml
         with:
           deployment_environment: ${{ matrix.target }}
