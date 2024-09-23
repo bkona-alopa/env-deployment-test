@@ -9,10 +9,10 @@ on:
 
 jobs:
   ReuseableMatrixJobForDeployment:
-    strategy:
-      matrix:
-        target:
-          [DEV, TEST, PROD]
+    # strategy:
+    #   matrix:
+    #     target:
+    #       [DEV, TEST, PROD]
     uses: ./.github/workflows/deploy.yml
     with:
-      deployment_environment: ${{ matrix.target }}
+      deployment_environment: "DEV"
