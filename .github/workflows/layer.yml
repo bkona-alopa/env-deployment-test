@@ -15,6 +15,9 @@ jobs:
         target:
           [DEV, TEST, PROD]
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
       - name: deployment
         uses: ./.github/workflows/deploy.yml
         with:
